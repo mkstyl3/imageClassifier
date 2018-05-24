@@ -4,6 +4,7 @@
     // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "type": "java",
             "name": "Debug (Launch)-App<imageClassifier>",
@@ -17,10 +18,14 @@
         },
         {
             "type": "java",
-            "name": "Debug (Attach)",
-            "request": "attach",
-            "hostName": "localhost",
-            "port": 0
+            "name": "Debug (Launch)-Demo<imageClassifier>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "edu.upc.cities2.Demo",
+            "projectName": "imageClassifier",
+            "args": ""
         }
     ]
 }

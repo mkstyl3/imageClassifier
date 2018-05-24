@@ -1,0 +1,8 @@
+@relation CITIES_vs_MOUNTAINS
+@attribute filename string
+@attribute class {CITY,MOUNTAIN}
+@data
+c1.jpg, CITY
+c2.jpg, CITY
+m28.jpg, MOUNTAIN
+m29.jpg, MOUNTAIN

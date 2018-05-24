@@ -1,9 +1,12 @@
 package edu.upc.cities2;
 
 import java.io.File;
+import java.util.Random;
 
+import weka.classifiers.Evaluation;
 import weka.classifiers.bayes.NaiveBayesMultinomial;
 import weka.core.Instances;
+import weka.core.SerializationHelper;
 import weka.core.Utils;
 import weka.core.converters.ArffSaver;
 import weka.core.converters.ConverterUtils.DataSource;
@@ -42,6 +45,14 @@ public class App
         NaiveBayesMultinomial nbm = new NaiveBayesMultinomial();
         //naive nbm = new naive();
         nbm.buildClassifier(trainingSubset);
+        int runs = 30;
+        for (int i = 1; i <= runs; i++) {
+            Evaluation eval = new Evaluation(trainingSubset);
+            eval.crossValidateModel(nbm, trainingSubset, 10, new Random(i));
+            System.out.println("#" + i + "\t" + summary(eval));
+        }
+        SerializationHelper.write("src/main/resources/models/nbm.model", nbm);
+        
 
         // output predictions
         System.out.println("# - actual - predicted - error - distribution");
@@ -73,6 +84,11 @@ public class App
     catch (Exception ex) {
             System.out.println(ex.getMessage());
     }
+}
+
+private static String summary(Evaluation eval){
+    return Utils.doubleToString(eval.correct(), 12, 4) + "\t " +
+            Utils.doubleToString(eval.pctCorrect(), 12, 4) + "%";
 }
 
     public static Instances getFilteredDataSet(String path) throws Exception {
