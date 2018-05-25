@@ -2,7 +2,7 @@
 @attribute filename string
 @attribute class {CITY,MOUNTAIN}
 @data
-c1.jpg, CITY
+c1.jpg, MOUNTAIN
 c2.jpg, CITY
-m28.jpg, MOUNTAIN
+m28.jpg, CITY
 m29.jpg, MOUNTAIN

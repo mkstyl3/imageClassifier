@@ -32,6 +32,9 @@ public class Demo {
             //APLICAR EL FILTRO
     
             Instances demoSubset = getFilteredDataSet("datasets/demo.arff");
+            
+            //SAVE THE DEMO FILTERED ARFF
+
             ArffSaver saver = new ArffSaver();
             saver.setInstances(demoSubset);
             saver.setFile(new File("src/main/resources/fdatasets/demoFiltered.arff"));
@@ -73,10 +76,7 @@ public class Demo {
 		}
     }
     
-    private static String summary(Evaluation eval){
-        return Utils.doubleToString(eval.correct(), 12, 4) + "\t " +
-                Utils.doubleToString(eval.pctCorrect(), 12, 4) + "%";
-    }
+    
     
     public static Instances getFilteredDataSet(String path) throws Exception {
 
